@@ -10,7 +10,6 @@ module.exports = class Email{
         this.from = 'Rania'
     }
 
-    // SETUP THE TRANSPORTER BASED ON THE NODE ENVIRONMENT
     newTransport() {
         let transporter = nodemailer.createTransport({
             host: "smtp.mailgun.org",
