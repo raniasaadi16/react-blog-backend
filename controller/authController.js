@@ -61,7 +61,7 @@ exports.login = catchAsync(async (req,res,next)=>{
     const cookieOption = {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN*24*60*60*1000),
         httpOnly: true,
-       // secure : true
+        secure : true
     };
     //if(req.secure || req.headers('x-forwarded-proto')=== 'https') cookieOption.secure = true;
 
@@ -273,9 +273,9 @@ exports.confirmNewEmail = catchAsync(async (req,res,next)=>{
     const cookieOption = {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN*24*60*60*1000),
         httpOnly: true,
-        //secure : true
+        secure : true
     };
-    if(req.secure || req.headers('x-forwarded-proto')=== 'https') cookieOption.secure = true;
+    //if(req.secure || req.headers('x-forwarded-proto')=== 'https') cookieOption.secure = true;
     res.cookie('jwt', token, cookieOption);
 
     res.status(200).json({
@@ -303,9 +303,9 @@ exports.updatePass = catchAsync(async (req,res,next)=>{
     const cookieOption = {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN*24*60*60*1000),
         httpOnly: true,
-        //secure : true
+        secure : true
     };
-    if(req.secure || req.headers('x-forwarded-proto')=== 'https') cookieOption.secure = true;
+    //if(req.secure || req.headers('x-forwarded-proto')=== 'https') cookieOption.secure = true;
     res.cookie('jwt', token, cookieOption);
 
     res.status(200).json({
@@ -376,9 +376,9 @@ exports.ressetPasswordUpdate = catchAsync(async (req,res,next)=>{
     const cookieOption = {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN*24*60*60*1000),
         httpOnly: true,
-       // secure : true
+        secure : true
     };
-    if(req.secure || req.headers('x-forwarded-proto')=== 'https') cookieOption.secure = true;
+    //if(req.secure || req.headers('x-forwarded-proto')=== 'https') cookieOption.secure = true;
 
     res.cookie('jwt', token, cookieOption);
 

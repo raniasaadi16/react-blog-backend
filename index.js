@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGO_URL ,
 }).then(console.log('DB connected ....')).catch(err=> console.log(err));
 
 var corsOptions = {
-  origin: 'https://mern-blog-react.vercel.app',
+  origin: ['https://mern-blog-react.vercel.app'],
   credentials : true
  }
 
