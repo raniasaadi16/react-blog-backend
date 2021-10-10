@@ -98,7 +98,7 @@ exports.signup = catchAsync(async (req,res,next)=>{
         const emailToken = newUser.generateRandomEmailToken();
         // SENDING EMAIL
         //const resetURL = `${req.protocol}://${req.get('host')}/api/users/activateAccount/${emailToken}`;
-        const resetURL = `https://nextjs-mern-blog.herokuapp.com/api/activateAccount/${emailToken}`;
+        const resetURL = `https://nextjs-mern-blog.herokuapp.com/api/users/activateAccount/${emailToken}`;
         //const message = `welcome to your account!,please go to this url to activate your account : ${resetURL}`;
         // sendEmail(newUser.email,'activate your account',message);
         await new sendEmail(newUser,resetURL).sendWelcome();
