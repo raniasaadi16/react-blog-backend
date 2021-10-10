@@ -98,7 +98,7 @@ exports.signup = catchAsync(async (req,res,next)=>{
         const emailToken = newUser.generateRandomEmailToken();
         // SENDING EMAIL
         //const resetURL = `${req.protocol}://${req.get('host')}/api/users/activateAccount/${emailToken}`;
-        const resetURL = `${req.protocol}://localhost:3000/activateAccount/${emailToken}`;
+        const resetURL = `https://nextjs-mern-blog.herokuapp.com/api/activateAccount/${emailToken}`;
         //const message = `welcome to your account!,please go to this url to activate your account : ${resetURL}`;
         // sendEmail(newUser.email,'activate your account',message);
         await new sendEmail(newUser,resetURL).sendWelcome();
@@ -154,7 +154,7 @@ exports.resendEmailToken = catchAsync(async (req,res,next)=>{
         // GENERATE EMAIL TOKEN
         const emailToken = user.generateRandomEmailToken();
         // SEND EMAIL
-        const resetURL = `${req.protocol}://${req.get('host')}/api/users/activateAccount/${emailToken}`;
+        const resetURL = `https://nextjs-mern-blog.herokuapp.com/api/users/activateAccount/${emailToken}`;
         //const message = `welcome to your account!,please go to this url to activate your account : ${resetURL}`;
         await new sendEmail(user,resetURL).sendWelcome();
         await user.save({ validateBeforeSave: false });
@@ -242,7 +242,7 @@ exports.updateEmail = catchAsync(async (req,res,next)=>{
         const token = user.generateRandomNewEmailToken();
         // SAVE THE NEW EMAIL TO A TEMPORARY FIELD IN DATABASE AND SEND TOKEN VIA EMAIL
         user.newEmail = newEmail;
-        const resetURL = `${req.protocol}://${req.get('host')}/api/users/confirmNewEmail/${token}`;
+        const resetURL = `https://nextjs-mern-blog.herokuapp.com/api/users/confirmNewEmail/${token}`;
         await new sendEmail(user,resetURL).sendConfirmNewEmail();
         await user.save({ validateBeforeSave: false });
 
@@ -328,7 +328,7 @@ exports.forgetPassword = catchAsync(async (req,res,next)=>{
     try{
         // GENERATE PASSWORD TOKEN AND SEND EMAIL
         const resetToken = user.generateRandomPassToken();
-        const resetURL = `${req.protocol}://${req.get('host')}/api/users/ressetPassword/${resetToken}`;
+        const resetURL = `https://nextjs-mern-blog.herokuapp.com/api/users/ressetPassword/${resetToken}`;
         await new sendEmail(user,resetURL).sendPasswordReset();
         // by doing : this.passwordResetToken=..... we update the document so we need to save it
         await user.save({ validateBeforeSave: false });
