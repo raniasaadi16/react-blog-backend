@@ -37,8 +37,8 @@ app.enable('trust proxy')
 app.use(cors(corsOptions))
 //app.options('*', cors())
 app.use(function (req, res, next) {
-  //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.setHeader('Access-Control-Allow-Origin', 'https://www.raniadev-blog.tk');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  //res.setHeader('Access-Control-Allow-Origin', 'https://www.raniadev-blog.tk');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'X-HTTP-Method-Override', 'X-Requested-With');
   res.setHeader('Access-Control-Allow-Credentials', true);
