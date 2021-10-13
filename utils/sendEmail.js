@@ -66,7 +66,7 @@ module.exports = class Email{
         );
     }
     // SEND RESET PASSWORD
-    async sedConfirmNewEmail() {
+    async sendConfirmNewEmail() {
         await this.send(
           'confirmNewEmail',
           'Your confirm email token'
