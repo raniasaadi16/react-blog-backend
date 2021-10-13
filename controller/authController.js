@@ -252,7 +252,7 @@ exports.updateEmail = catchAsync(async (req,res,next)=>{
             data: {user}
         })
     }catch(err){
-        return next(new AppError('There was an error sending the email, try again',500))
+        return next(new appError('There was an error sending the email, try again',500))
     }    
 });
 //*******************CONFIRM NEW EMAIL*****************/
@@ -341,7 +341,7 @@ exports.forgetPassword = catchAsync(async (req,res,next)=>{
             }
         })
     }catch(err){
-        return next(new AppError('There was an error sending the email, try again',500))
+        return next(new appError('There was an error sending the email, try again',500))
     } 
 });
 //*******************RESSET PASSWORD GET*****************/
