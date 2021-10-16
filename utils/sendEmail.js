@@ -3,7 +3,7 @@ const htmlToText = require('html-to-text');
 const hbs = require('nodemailer-handlebars');
 
 module.exports = class Email{
-    constructor(email, url){
+    constructor(email, user, url){
         this.to = email,
         this.firstName = user.firstName,
         this.url = url,

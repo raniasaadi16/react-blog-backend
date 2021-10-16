@@ -101,7 +101,7 @@ exports.signup = catchAsync(async (req,res,next)=>{
         const resetURL = `https://www.raniadev-blog.tk/activateAccount/${emailToken}`;
         //const message = `welcome to your account!,please go to this url to activate your account : ${resetURL}`;
         // sendEmail(newUser.email,'activate your account',message);
-        await new sendEmail(newUser.email,resetURL).sendWelcome();
+        await new sendEmail(newUser.email,newUser, resetURL).sendWelcome();
         await newUser.save({ validateBeforeSave: false });
 
         res.status(201).json({
@@ -156,7 +156,7 @@ exports.resendEmailToken = catchAsync(async (req,res,next)=>{
         // SEND EMAIL
         const resetURL = `https://www.raniadev-blog.tk/activateAccount/${emailToken}`;
         //const message = `welcome to your account!,please go to this url to activate your account : ${resetURL}`;
-        await new sendEmail(user.email,resetURL).sendWelcome();
+        await new sendEmail(user.email,user ,resetURL).sendWelcome();
         await user.save({ validateBeforeSave: false });
 
         res.status(200).json({
@@ -243,7 +243,7 @@ exports.updateEmail = catchAsync(async (req,res,next)=>{
         // SAVE THE NEW EMAIL TO A TEMPORARY FIELD IN DATABASE AND SEND TOKEN VIA EMAIL
         user.newEmail = newEmail;
         const resetURL = `https://www.raniadev-blog.tk/confirmNewEmail/${token}`;
-        await new sendEmail(newEmail,resetURL).sendConfirmNewEmail();
+        await new sendEmail(newEmail,user, resetURL).sendConfirmNewEmail();
         await user.save({ validateBeforeSave: false });
 
         res.status(200).json({
@@ -329,7 +329,7 @@ exports.forgetPassword = catchAsync(async (req,res,next)=>{
         // GENERATE PASSWORD TOKEN AND SEND EMAIL
         const resetToken = user.generateRandomPassToken();
         const resetURL = `https://www.raniadev-blog.tk/ressetPassword/${resetToken}`;
-        await new sendEmail(user.email,resetURL).sendPasswordReset();
+        await new sendEmail(user.email,user ,resetURL).sendPasswordReset();
         // by doing : this.passwordResetToken=..... we update the document so we need to save it
         await user.save({ validateBeforeSave: false });
 
